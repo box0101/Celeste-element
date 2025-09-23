@@ -1,10 +1,10 @@
 import type { Ref, InjectionKey } from "vue"
 
-export type nameType = String | number
+export type nameType = string | number
 
 export interface CollapseProps {
   modelValue: nameType[],
-  accordion?: boolean
+  accordion?: boolean,
 }
 
 export interface CollapseEmits {
@@ -15,7 +15,8 @@ export interface CollapseEmits {
 export interface CollapseItemProps {
   name: nameType,
   title?: String,
-  disabled?: boolean
+  disabled?: boolean,
+  icon?: string
 }
 
 export interface CollapseContext {

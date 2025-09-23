@@ -16,5 +16,7 @@ export interface ButtonProps {
   circle?: boolean,
   disabled?: boolean,
   nativeType?: NativeType,
-  autofocus?: boolean
+  autofocus?: boolean,
+  loading?: boolean,
+  icon?: string
 }

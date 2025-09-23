@@ -79,9 +79,9 @@
     background-color: var(--clt-button-disabled-bg-color);
     border-color: var(--clt-button-disabled-border-color);
   }
-  [class*=clt-icon] + span {
+  /* [class*=clt-icon] + span {
     margin-left: 6px;
-  }
+  } */
 }
 
 @each $val in primary, success, info, warning, danger {

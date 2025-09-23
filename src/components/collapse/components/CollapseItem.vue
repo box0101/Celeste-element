@@ -12,6 +12,7 @@
     }"
     :id="`clt-collapse-item--${name}`" @click="handleClick">
       <slot name="title">{{ title }}</slot>
+      <Icon icon="angle-right" class="header-angle"></Icon>
     </div>
     <Transition name="slide" v-on="transitionEvent">
       <div class="clt-collapse-item__wrapper"  v-show="isActive">
@@ -26,6 +27,7 @@
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import { collapseContextKey } from '../types'
+import Icon from '@/components/icon/Icon.vue'
 import type { CollapseItemProps } from '../types'
 const props = defineProps<CollapseItemProps>()
 

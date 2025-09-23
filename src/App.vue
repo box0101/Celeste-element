@@ -5,7 +5,7 @@ import type { ButtonInstance } from './components/button/types'
 import Collapse from './components/collapse/Collapse.vue'
 import CollapseItem from './components/collapse/components/CollapseItem.vue'
 import type { nameType } from './components/collapse/types'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import Icon from './components/icon/Icon.vue'
 
 const buttonRef = ref<ButtonInstance | null>(null)
 onMounted(() => {
@@ -19,8 +19,6 @@ const activeNames = ref<nameType[]>(['a'])
 </script>
 
 <template>
-  <font-awesome-icon icon="fa-solid fa-user-secret"></font-awesome-icon>
-  
   <Button ref="buttonRef" type="primary">Primary</Button>
   <Button ref="buttonRef" type="success">Success</Button>
   <Button ref="buttonRef" type="info">Info</Button>
@@ -42,11 +40,11 @@ const activeNames = ref<nameType[]>(['a'])
   <Button round ref="buttonRef" type="danger">Danger</Button>
   <br>
   <br>
-  <Button circle ref="buttonRef" type="primary">√ </Button>
-  <Button circle ref="buttonRef" type="success">× </Button>
-  <Button circle ref="buttonRef" type="info">⭐</Button>
-  <Button circle ref="buttonRef" type="warning">❤</Button>
-  <Button circle ref="buttonRef" type="danger">✉</Button>
+  <Button circle ref="buttonRef" type="primary" icon="check"></Button>
+  <Button circle ref="buttonRef" type="success" icon="rotate"></Button>
+  <Button circle ref="buttonRef" type="info" icon="trash"></Button>
+  <Button circle ref="buttonRef" type="warning" icon="gear"></Button>
+  <Button circle ref="buttonRef" type="danger" icon="eye-slash"></Button>
   <br>
   <br>
   <Button disabled ref="buttonRef" type="primary">Primary</Button>
@@ -54,7 +52,8 @@ const activeNames = ref<nameType[]>(['a'])
   <Button disabled ref="buttonRef" type="info">Info</Button>
   <Button disabled ref="buttonRef" type="warning">Warning</Button>
   <Button disabled ref="buttonRef" type="danger">Danger</Button>
-
+  <br>
+  <br>
   <Collapse accordion v-model="activeNames">
     <CollapseItem name="a">
       <template #title>
@@ -70,6 +69,16 @@ const activeNames = ref<nameType[]>(['a'])
       <div>content ccccccc</div>
     </CollapseItem>
   </Collapse>
+  <br>
+  <br>
+  <Icon icon="arrow-up" type="danger" size="2xl"></Icon>
+  <br>
+  <br>
+  <h3>Button + Icon Test：</h3>
+  
+  <Button loading>loading</Button>
+  <Button icon="arrow-up">Icon</Button>
+  
 </template>
 
 <style scoped></style>
