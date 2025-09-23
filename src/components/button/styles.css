@@ -1,0 +1,127 @@
+.clt-button {
+  --clt-button-font-weight: var(--clt-font-weight-primary);
+  --clt-button-border-color: var(--clt-border-color);
+  --clt-button-bg-color: var(--clt-fill-color-blank);
+  --clt-button-text-color: var(--clt-text-color-regular);
+  --clt-button-disabled-text-color: var(--clt-disabled-text-color);
+  --clt-button-disabled-bg-color: var(--clt-fill-color-blank);
+  --clt-button-disabled-border-color: var(--clt-border-color-light);
+  --clt-button-hover-text-color: var(--clt-color-primary);
+  --clt-button-hover-bg-color: var(--clt-color-primary-light-9);
+  --clt-button-hover-border-color: var(--clt-color-primary-light-7);
+  --clt-button-active-text-color: var(--clt-button-hover-text-color);
+  --clt-button-active-border-color: var(--clt-color-primary);
+  --clt-button-active-bg-color: var(--clt-button-hover-bg-color);
+  --clt-button-outline-color: var(--clt-color-primary-light-5);
+  --clt-button-active-color: var(--clt-text-color-primary);
+}
+
+.clt-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+  height: 32px;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--clt-button-text-color);
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  transition: .1s;
+  font-weight: var(--clt-button-font-weight);
+  user-select: none;
+  vertical-align: middle;
+  -webkit-appearance: none;
+  background-color: var(--clt-button-bg-color);
+  border: var(--clt-border);
+  border-color: var(--clt-button-border-color);
+  padding: 8px 15px;
+  font-size: var(--clt-font-size-base);
+  border-radius: var(--clt-border-radius-base);
+  & + & {
+    margin-left: 12px;
+  }
+  &:hover,
+  &:focus {
+    color: var(--clt-button-hover-text-color);
+    border-color: var(--clt-button-hover-border-color);
+    background-color: var(--clt-button-hover-bg-color);
+    outline: none;    
+  }
+  &:active {
+    color: var(--clt-button-active-text-color);
+    border-color: var(--clt-button-active-border-color);
+    background-color: var(--clt-button-active-bg-color);
+    outline: none;
+  }
+  &.is-plain {
+    --clt-button-hover-text-color: var(--clt-color-primary);
+    --clt-button-hover-bg-color: var(--clt-fill-color-blank);
+    --clt-button-hover-border-color: var(--clt-color-primary);    
+  }
+  /*round*/
+  &.is-round {
+    border-radius: var(--clt-border-radius-round);
+  }
+  /*circle*/
+  &.is-circle {
+    border-radius: 50%;
+    padding: 8px;
+  }
+  /*disabled*/
+  &.is-disabled, &.is-disabled:hover, &.is-disabled:focus, 
+  &[disabled], &[disabled]:hover, &[disabled]:focus 
+  {
+    color: var(--clt-button-disabled-text-color);
+    cursor: not-allowed;
+    background-image: none;
+    background-color: var(--clt-button-disabled-bg-color);
+    border-color: var(--clt-button-disabled-border-color);
+  }
+  [class*=clt-icon] + span {
+    margin-left: 6px;
+  }
+}
+
+@each $val in primary, success, info, warning, danger {
+  .clt-button--$(val) {
+    --clt-button-text-color: var(--clt-color-white);
+    --clt-button-bg-color: var(--clt-color-$(val));
+    --clt-button-border-color: var(--clt-color-$(val));
+    --clt-button-outline-color: var(--clt-color-$(val)-light-5);
+    --clt-button-active-color: var(--clt-color-$(val)-dark-2);
+    --clt-button-hover-text-color: var(--clt-color-white);
+    --clt-button-hover-bg-color: var(--clt-color-$(val)-light-3);
+    --clt-button-hover-border-color: var(--clt-color-$(val)-light-3);
+    --clt-button-active-bg-color: var(--clt-color-$(val)-dark-2);
+    --clt-button-active-border-color: var(--clt-color-$(val)-dark-2);
+    --clt-button-disabled-text-color: var(--clt-color-white);
+    --clt-button-disabled-bg-color: var(--clt-color-$(val)-light-5);
+    --clt-button-disabled-border-color: var(--clt-color-$(val)-light-5);
+  }
+  .clt-button--$(val).is-plain {
+    --clt-button-text-color: var(--clt-color-$(val));
+    --clt-button-bg-color: var(--clt-color-$(val)-light-9);
+    --clt-button-border-color: var(--clt-color-$(val)-light-5);
+    --clt-button-hover-text-color: var(--clt-color-white);
+    --clt-button-hover-bg-color: var(--clt-color-$(val));
+    --clt-button-hover-border-color: var(--clt-color-$(val));
+    --clt-button-active-text-color: var(--clt-color-white);
+  }
+}
+
+.clt-button--large {
+  --clt-button-size: 40px;
+  height: var(--clt-button-size);
+  padding: 12px 19px;
+  font-size: var(--clt-font-size-base);
+  border-radius: var(--clt-border-radius-base);
+}
+.clt-button--small {
+  --clt-button-size: 24px;
+  height: var(--clt-button-size);
+  padding: 5px 11px;
+  font-size: 12px;
+  border-radius: calc(var(--clt-border-radius-base) - 1px);
+}

@@ -1,0 +1,114 @@
+:root {
+  /* color */
+  --clt-color-white: #ffffff;
+  --clt-color-black: #000000;
+  --colors: (
+    primary: #409eff,
+    success: #67c23a,
+    warning: #e6a23c,
+    danger: #f56c6c,
+    info: #909399
+  );
+
+  @each $val, $color in var(--colors) {
+    --clt-color-$(val): $(color);
+    @for $i from 3 to 9 by 2 {
+      --clt-color-$(val)-light-$(i): mix(#fff, $(color), .$(i))
+    }
+    --clt-color-$(val)-light-8: mix(#fff, $(color), .8);
+    --clt-color-$(val)-dark-2: mix(#000, $(color), .2);
+  }
+  /* --clt-color-primary: #409eff;
+  --clt-color-primary-light-3: rgb(121, 187, 255);
+  --clt-color-primary-light-5: rgb(160, 207, 255);
+  --clt-color-primary-light-7: rgb(198, 226, 255);
+  --clt-color-primary-light-8: rgb(217, 236, 255);
+  --clt-color-primary-light-9: rgb(236, 245, 255);
+  --clt-color-primary-dark-2: rgb(51, 126, 204);
+  --clt-color-success: #67c23a;
+  --clt-color-success-light-3: rgb(149, 212, 117);
+  --clt-color-success-light-5: rgb(179, 225, 157);
+  --clt-color-success-light-7: rgb(209, 237, 196);
+  --clt-color-success-light-8: rgb(225, 243, 216);
+  --clt-color-success-light-9: rgb(240, 249, 235);
+  --clt-color-success-dark-2: rgb(82, 155, 46);
+  --clt-color-warning: #e6a23c;
+  --clt-color-warning-light-3: rgb(238, 190, 119);
+  --clt-color-warning-light-5: rgb(243, 209, 158);
+  --clt-color-warning-light-7: rgb(248, 227, 197);
+  --clt-color-warning-light-8: rgb(250, 236, 216);
+  --clt-color-warning-light-9: rgb(253, 246, 236);
+  --clt-color-warning-dark-2: rgb(184, 130, 48);
+  --clt-color-danger: #f56c6c;
+  --clt-color-danger-light-3: rgb(248, 152, 152);
+  --clt-color-danger-light-5: rgb(250, 182, 182);
+  --clt-color-danger-light-7: rgb(252, 211, 211);
+  --clt-color-danger-light-8: rgb(253, 226, 226);
+  --clt-color-danger-light-9: rgb(254, 240, 240);
+  --clt-color-danger-dark-2: rgb(196, 86, 86);
+  --clt-color-error: #f56c6c;
+  --clt-color-error-light-3: rgb(248, 152, 152);
+  --clt-color-error-light-5: rgb(250, 182, 182);
+  --clt-color-error-light-7: rgb(252, 211, 211);
+  --clt-color-error-light-8: rgb(253, 226, 226);
+  --clt-color-error-light-9: rgb(254, 240, 240);
+  --clt-color-error-dark-2: rgb(196, 86, 86);
+  --clt-color-info: #909399;
+  --clt-color-info-light-3: rgb(177, 179, 184);
+  --clt-color-info-light-5: rgb(200, 201, 204);
+  --clt-color-info-light-7: rgb(222, 223, 224);
+  --clt-color-info-light-8: rgb(233, 233, 235);
+  --clt-color-info-light-9: rgb(244, 244, 245);
+  --clt-color-info-dark-2: rgb(115, 118, 122); */
+
+  --clt-bg-color: #ffffff;
+  --clt-bg-color-page: #f2f3f5;
+  --clt-bg-color-overlay: #ffffff;
+  --clt-text-color-primary: #303133;
+  --clt-text-color-regular: #606266;
+  --clt-text-color-secondary: #909399;
+  --clt-text-color-placeholder: #a8abb2;
+  --clt-text-color-disabled: #c0c4cc;
+  --clt-border-color: #dcdfe6;
+  --clt-border-color-light: #e4e7ed;
+  --clt-border-color-lighter: #ebeef5;
+  --clt-border-color-extra-light: #f2f6fc;
+  --clt-border-color-dark: #d4d7de;
+  --clt-border-color-darker: #cdd0d6;
+  --clt-fill-color: #f0f2f5;
+  --clt-fill-color-light: #f5f7fa;
+  --clt-fill-color-lighter: #fafafa;
+  --clt-fill-color-extra-light: #fafcff;
+  --clt-fill-color-dark: #ebedf0;
+  --clt-fill-color-darker: #e6e8eb;
+  --clt-fill-color-blank: #ffffff;
+
+  /* border */
+  --clt-border-width: 1px;
+  --clt-border-style: solid;
+  --clt-border-color-hover: var(--clt-text-color-disabled);
+  --clt-border: var(--clt-border-width) var(--clt-border-style) var(--clt-border-color);
+  --clt-border-radius-base: 4px;
+  --clt-border-radius-small: 2px;
+  --clt-border-radius-round: 20px;
+  --clt-border-radius-circle: 100%;
+
+  /*font*/
+  --clt-font-size-extra-large: 20px;
+  --clt-font-size-large: 18px;
+  --clt-font-size-medium: 16px;
+  --clt-font-size-base: 14px;
+  --clt-font-size-small: 13px;
+  --clt-font-size-extra-small: 12px;
+  --clt-font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "\5fae\8f6f\96c5\9ed1", Arial, sans-serif;
+  --clt-font-weight-primary: 500;
+
+  /*disabled*/
+  --clt-disabled-bg-color: var(--clt-fill-color-light);
+  --clt-disabled-text-color: var(--clt-text-color-placeholder);
+  --clt-disabled-border-color: var(--clt-border-color-light);
+  
+  /*animation*/
+  --clt-transition-duration: .3s;
+  --clt-transition-duration-fast: .2s;
+}
