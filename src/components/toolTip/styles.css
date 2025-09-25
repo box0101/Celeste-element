@@ -1,0 +1,83 @@
+.clt-tooltip {
+  --clt-popover-bg-color: var(--clt-bg-color-overlay);
+  --clt-popover-font-size: var(--clt-font-size-base);
+  --clt-popover-border-color: var(--clt-border-color);
+  --clt-popover-padding: 12px;
+  --clt-popover-border-radius: 4px;
+  display: inline-block;
+}
+
+
+.clt-tooltip {
+  .clt-tooltip__popper {
+    background: var(--clt-popover-bg-color);
+    border-radius: var(--clt-popover-border-radius);
+    border: 1px solid var(--clt-popover-border-color);
+    padding: var(--clt-popover-padding);
+    color: var(--clt-text-color-regular);
+    line-height: 1.4;
+    text-align: justify;
+    font-size: var(--clt-popover-font-size);
+    box-shadow: var(--clt-box-shadow-light);
+    word-break: break-all;
+    box-sizing: border-box;
+    z-index: 1000;
+    #arrow,
+    #arrow::before {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      box-sizing: border-box;
+      background: var(--clt-popover-bg-color);
+    }
+    #arrow {
+      visibility: hidden;
+    }
+    #arrow::before {
+      visibility: visible;
+      content: "";
+      transform: rotate(45deg);
+    }
+    &[data-popper-placement^='top'] > #arrow {
+      bottom: -5px;
+    }
+    
+    &[data-popper-placement^='bottom'] > #arrow {
+      top: -5px;
+    }
+    
+    &[data-popper-placement^='left'] > #arrow {
+      right: -5px;
+    }
+    
+    &[data-popper-placement^='right'] > #arrow {
+      left: -5px;
+    }
+    &[data-popper-placement^="top"] > #arrow::before {
+      border-right: 1px solid var(--clt-popover-border-color);
+      border-bottom: 1px solid var(--clt-popover-border-color);
+    }
+    &[data-popper-placement^="bottom"] > #arrow::before {
+      border-left: 1px solid var(--clt-popover-border-color);
+      border-top: 1px solid var(--clt-popover-border-color);
+    }
+    &[data-popper-placement^="left"] > #arrow::before {
+      border-right: 1px solid var(--clt-popover-border-color);
+      border-top: 1px solid var(--clt-popover-border-color);
+    }
+    &[data-popper-placement^="right"] > #arrow::before {
+      border-left: 1px solid var(--clt-popover-border-color);
+      border-bottom: 1px solid var(--clt-popover-border-color);
+    }
+  }  
+
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity var(--clt-transition-duration);
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
+  }
+}

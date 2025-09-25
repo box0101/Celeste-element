@@ -6,8 +6,11 @@ import Collapse from './components/collapse/Collapse.vue'
 import CollapseItem from './components/collapse/components/CollapseItem.vue'
 import type { nameType } from './components/collapse/types'
 import Icon from './components/icon/Icon.vue'
+import ToolTip from './components/toolTip/ToolTip.vue'
+import type { TooltipInstance } from './components/toolTip/types'
 
 const buttonRef = ref<ButtonInstance | null>(null)
+const tooltipRef = ref<TooltipInstance | null>(null)
 onMounted(() => {
   if(buttonRef.value) {
     console.log(buttonRef.value.ref)
@@ -19,6 +22,16 @@ const activeNames = ref<nameType[]>(['a'])
 </script>
 
 <template>
+  <h3>Popper Example</h3>
+  <ToolTip placement="right-end" :open-delay="1000" :close-delay="1000" content="love gem" trigger="hover" ref="tooltipRef">
+    <img alt="Vue logo" src="./assets/gem.jpg" width="150" height="125">
+  </ToolTip>
+  <br>
+  <br>
+  <Button plain ref="buttonRef" type="success" @click="tooltipRef?.show">Open</Button>
+  <Button plain ref="buttonRef" type="success" @click="tooltipRef?.hide">Close</Button>
+  <br><br>
+
   <Button ref="buttonRef" type="primary">Primary</Button>
   <Button ref="buttonRef" type="success">Success</Button>
   <Button ref="buttonRef" type="info">Info</Button>
@@ -78,7 +91,8 @@ const activeNames = ref<nameType[]>(['a'])
   
   <Button loading>loading</Button>
   <Button icon="arrow-up">Icon</Button>
-  
+  <br>
+  <br>
 </template>
 
 <style scoped></style>
