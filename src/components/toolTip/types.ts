@@ -13,7 +13,8 @@ export interface TooltipProps {
 }
 
 export interface TooltipEmits {
-  (e: 'visiable-change', value: boolean): void
+  (e: 'visible-change', value: boolean): void,
+  (e: 'clcik-outside', value: boolean): void
 }
 
 export interface TooltipInstance {

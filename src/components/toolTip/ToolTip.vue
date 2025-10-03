@@ -10,7 +10,7 @@
       ref="triggerNode"
       v-on="events"
     >
-    <slot></slot>
+      <slot></slot>
     </div>
 
     <Transition :name="transition">
@@ -19,7 +19,9 @@
         class="clt-tooltip__popper"
         ref="overlayNode"
       >
-      {{ content }}
+        <slot name="content">
+          {{ content }}
+        </slot>
       </div>
     </Transition>
     
@@ -43,8 +45,8 @@ const props = withDefaults(defineProps<TooltipProps>(),{
 })
 const emits = defineEmits<TooltipEmits>()
 const isOpen = ref(false)
-const triggerNode = ref<HTMLElement | null>(null)
-const overlayNode = ref<HTMLElement | null>(null)
+const triggerNode = ref<HTMLElement>()
+const overlayNode = ref<HTMLElement>()
 const popperContainerNode = ref<HTMLElement>()
 let PopperInstance: Instance | null = null
 let events: Record<string, any> = reactive({})
@@ -65,7 +67,7 @@ const popperOptions = computed(() => {
 })
 
 const togglePopper = () => {
-  if(isOpen.value) {
+  if(!isOpen.value) {
     open()
   } else {
     close()
@@ -75,14 +77,14 @@ const togglePopper = () => {
 const open = () => {
   setTimeout(() => {
     isOpen.value = true
-    emits('visiable-change', true)
+    emits('visible-change', true)
   }, props.openDelay)
 }
 
 const close = () => {
   setTimeout(() => {
     isOpen.value = false
-    emits('visiable-change', false)
+    emits('visible-change', false)
   }, props.closeDelay)
 }
 
@@ -96,10 +98,11 @@ const attachEvents = () => {
 }
 
 useClickOutside(popperContainerNode, () => {
-  if(popperContainerNode.value) {
-    if(props.trigger === 'click' && isOpen.value && !props.manual) {
-      close()
-    }
+  if(props.trigger === 'click' && isOpen.value && !props.manual) {
+    close()
+  }
+  if(isOpen.value) {
+    emits('clcik-outside', true)
   }
 })
 
@@ -112,6 +115,15 @@ watch(() => props.manual, (isManual) => {
     events = {}
     outerEvents = {}
   } else {
+    attachEvents()
+  }
+})
+
+watch(() => props.trigger, (newTrigger, oldTrigger) => {
+  if (newTrigger !== oldTrigger) {
+    // clear the events
+    events = {}
+    outerEvents = {}
     attachEvents()
   }
 })
@@ -140,8 +152,5 @@ defineOptions({
 </script>
 
 <style>
-.clt-tooltip__trigger,
-.clt-tooltip__popper{
-  border: 2px solid #ad64ad;
-}
+
 </style>

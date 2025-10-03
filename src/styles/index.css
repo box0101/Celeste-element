@@ -4,3 +4,8 @@
 @import '../components/collapse/styles.css';
 @import '../components/icon/styles.css';
 @import '../components/toolTip/styles.css';
+@import '../components/message/style.css';
+@import '../components/input/style.css';
+@import '../components/switch/style.css';
+@import '../components/select/style.css';
+@import '../components/form/style.css';

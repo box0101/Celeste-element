@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Button from './components/button/Button.vue'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, h } from 'vue'
 import type { ButtonInstance } from './components/button/types'
 import Collapse from './components/collapse/Collapse.vue'
 import CollapseItem from './components/collapse/components/CollapseItem.vue'
@@ -8,10 +8,38 @@ import type { nameType } from './components/collapse/types'
 import Icon from './components/icon/Icon.vue'
 import ToolTip from './components/toolTip/ToolTip.vue'
 import type { TooltipInstance } from './components/toolTip/types'
+import DropDown from './components/dropdown/DropDown.vue'
+import type { MenuOption } from './components/dropdown/types'
+// import Message from './components/message/Message.vue'
+import { createMessage } from './components/message/method'
 
 const buttonRef = ref<ButtonInstance | null>(null)
 const tooltipRef = ref<TooltipInstance | null>(null)
+const trigger = ref<any>('click')
 onMounted(() => {
+  createMessage({
+    message: 'hello world',
+    duration: 2000,
+    type: 'success',
+    showClose: true
+  })
+  createMessage({
+    message: 'hello world again',
+    duration: 2000,
+    type: 'warning',
+    showClose: true
+  })
+  createMessage({
+    message: 'hello world three',
+    duration: 2000,
+    showClose: true
+  })
+  createMessage({
+    message: 'hello world forth',
+    duration: 2000,
+    type: 'error',
+    showClose: true
+  })
   if(buttonRef.value) {
     console.log(buttonRef.value.ref)
   }
@@ -19,11 +47,26 @@ onMounted(() => {
 
 const activeNames = ref<nameType[]>(['a'])
 
+const options: MenuOption[] = [
+  { key:1, label: h('b', 'this is bold') },
+  { key:2, label: 'item2', disabled: true },
+  { key:3, label: 'item3', divided: true },
+  { key:4, label: 'item4' }
+]
+
 </script>
 
 <template>
+
+  <h3>DropDown test</h3>
+  <DropDown :menu-options="options" placement="right-end" :trigger="trigger">
+    <img alt="Vue logo" src="./assets/gem.jpg" width="150" height="125">
+  </DropDown>
+  <br>
+  <br>
+
   <h3>Popper Example</h3>
-  <ToolTip placement="right-end" :open-delay="1000" :close-delay="1000" content="love gem" trigger="hover" ref="tooltipRef">
+  <ToolTip placement="right-end" :open-delay="1000" :close-delay="1000" content="love gem" :trigger="trigger" ref="tooltipRef">
     <img alt="Vue logo" src="./assets/gem.jpg" width="150" height="125">
   </ToolTip>
   <br>
