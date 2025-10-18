@@ -15,7 +15,7 @@ import { createMessage } from './components/message/method'
 
 const buttonRef = ref<ButtonInstance | null>(null)
 const tooltipRef = ref<TooltipInstance | null>(null)
-const trigger = ref<any>('click')
+const trigger = ref<any>('hover')
 onMounted(() => {
   createMessage({
     message: 'hello world',

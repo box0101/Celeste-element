@@ -35,6 +35,7 @@ import { computed, onUnmounted, reactive, watch } from 'vue';
 import { ref } from 'vue'
 import useClickOutside from '@/composables/useClickOutside'
 import type { TooltipInstance } from './types'
+import { debounce } from 'lodash-es'
 
 const props = withDefaults(defineProps<TooltipProps>(),{
   placement: 'bottom',
@@ -66,40 +67,38 @@ const popperOptions = computed(() => {
   }
 })
 
-const togglePopper = () => {
-  if(!isOpen.value) {
-    open()
-  } else {
-    close()
-  }
-}
-
 const open = () => {
-  setTimeout(() => {
-    isOpen.value = true
-    emits('visible-change', true)
-  }, props.openDelay)
+  isOpen.value = true
+  emits('visible-change', true)
 }
 
 const close = () => {
-  setTimeout(() => {
-    isOpen.value = false
-    emits('visible-change', false)
-  }, props.closeDelay)
+  isOpen.value = false
+  emits('visible-change', false)
 }
 
+const openDebounce = debounce(open, props.openDelay)
+const closeDebounce = debounce(close, props.closeDelay)
+
+const togglePopper = () => {
+  if(!isOpen.value) {
+    openDebounce()
+  } else {
+    closeDebounce()
+  }
+}
 const attachEvents = () => {
   if(props.trigger === 'click') {
     events['click'] = togglePopper
   } else if(props.trigger === 'hover') {
-    events['mouseenter'] = open
-    outerEvents['mouseleave'] = close
+    events['mouseenter'] = openDebounce
+    outerEvents['mouseleave'] = closeDebounce
   }
 }
 
 useClickOutside(popperContainerNode, () => {
   if(props.trigger === 'click' && isOpen.value && !props.manual) {
-    close()
+    closeDebounce()
   }
   if(isOpen.value) {
     emits('clcik-outside', true)
@@ -142,8 +141,8 @@ watch(isOpen, (newValue) => {
 onUnmounted(() => PopperInstance?.destroy())
 
 defineExpose<TooltipInstance>({
-  'show': open,
-  'hide': close
+  'show': openDebounce,
+  'hide': closeDebounce
 })
 
 defineOptions({

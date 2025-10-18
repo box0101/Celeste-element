@@ -7,7 +7,8 @@
       "@/*": ["./src/*"]
     },
     "types": ["unplugin-vue-macros/macros-global" /* ... */],
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "noImplicitAny": false
   },
   "vueCompilerOptions": {
     "plugins": [

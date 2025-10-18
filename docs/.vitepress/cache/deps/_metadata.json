@@ -2,12 +2,12 @@
   "hash": "cae123ee",
   "configHash": "49872df5",
   "lockfileHash": "e610d97f",
-  "browserHash": "787c0978",
+  "browserHash": "cc05764a",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "fb691493",
+      "fileHash": "32562373",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
@@ -19,19 +19,19 @@
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/vitepress/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "15f1f9a1",
+      "fileHash": "094bedea",
       "needsInterop": false
     },
     "@fortawesome/vue-fontawesome": {
       "src": "../../../../node_modules/@fortawesome/vue-fontawesome/index.es.js",
       "file": "@fortawesome_vue-fontawesome.js",
-      "fileHash": "8a4e9ba3",
+      "fileHash": "1eef212b",
       "needsInterop": false
     },
     "@fortawesome/fontawesome-svg-core": {
       "src": "../../../../node_modules/@fortawesome/fontawesome-svg-core/index.mjs",
       "file": "@fortawesome_fontawesome-svg-core.js",
-      "fileHash": "33ae8d09",
+      "fileHash": "6954f43c",
       "needsInterop": false
     },
     "@fortawesome/free-solid-svg-icons": {
@@ -43,7 +43,7 @@
     "@vitepress-demo-preview/component": {
       "src": "../../../../node_modules/@vitepress-demo-preview/component/dist/preview-component.js",
       "file": "@vitepress-demo-preview_component.js",
-      "fileHash": "59ba7014",
+      "fileHash": "879f267d",
       "needsInterop": false
     },
     "lodash-es": {
@@ -56,6 +56,12 @@
       "src": "../../../../node_modules/async-validator/dist-web/index.js",
       "file": "async-validator.js",
       "fileHash": "482e3f06",
+      "needsInterop": false
+    },
+    "@popperjs/core": {
+      "src": "../../../../node_modules/@popperjs/core/lib/index.js",
+      "file": "@popperjs_core.js",
+      "fileHash": "424285f9",
       "needsInterop": false
     }
   },
