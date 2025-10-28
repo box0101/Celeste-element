@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import DropDown from '@/components/dropdown/DropDown.vue'
-import type { MenuOption } from '@/components/dropdown/types'
+import DropDown from '../../../src/components/dropdown/DropDown.vue'
+import type { MenuOption } from '../../../src/components/dropdown/types'
 import { ref } from 'vue'
 
 const options: MenuOption[] = [

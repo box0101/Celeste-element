@@ -31,6 +31,4 @@ const activeNames = ref<string[]>(['1'])
       禁用
     </CollapseItem>
   </Collapse>
-
-  <p>当前展开面板: {{ activeNames }}</p>
 </template>

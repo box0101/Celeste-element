@@ -11,14 +11,15 @@
   }
 }
 .clt-dropdown__menu {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+  list-style-type: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
   .clt-dropdown__item {
     display: flex;
+    width: 100%;
     align-items: center;
     white-space: nowrap;
-    list-style: none;
+    list-style: none !important;
     line-height: 22px;
     padding: 5px 16px;
     margin: 0;
@@ -39,5 +40,9 @@
   .divided-placeholder {
     margin: 6px 0;
     border-top: 1px solid var(--clt-dropdown-menuItem-divided-color);
+    height: 1px;
+    background-color: #e5e5e5;
+    list-style: none; /* 防止小圆点出现 */
+    pointer-events: none; /* 不阻挡 hover */
   }
 }
