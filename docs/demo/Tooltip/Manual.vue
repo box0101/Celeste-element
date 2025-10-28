@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import ToolTip from '@/components/toolTip/ToolTip.vue'
-import Button from '@/components/button/Button.vue'
+import ToolTip from '../../../src/components/toolTip/ToolTip.vue'
+import Button from '../../../src/components/button/Button.vue'
+import type { TooltipInstance } from '../../../src/components/toolTip/types'
 import { ref } from 'vue'
 const tooltipRef = ref<TooltipInstance | null>(null)
 
