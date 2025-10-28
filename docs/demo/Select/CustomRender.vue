@@ -25,4 +25,17 @@ const customRender = (option) => {
   width: 100%;
   color: rgb(53, 50, 50);
 }
+.clt-select__menu-item.is-disabled {
+  color: var(--clt-select-item-disabled-font-color);
+  cursor: not-allowed;
+}
+
+.clt-select__menu-item.is-disabled:hover {
+  background-color: transparent; /* 禁用项不高亮 */
+}
+
+.clt-select__menu-item.is-disabled .option2 {
+  color:  var(--clt-select-item-disabled-font-color) ; /* 让自定义渲染也变灰 */
+}
+
 </style>

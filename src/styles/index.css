@@ -2,6 +2,7 @@
 @import './reset.css';
 @import '../components/button/styles.css';
 @import '../components/collapse/styles.css';
+@import '../components/dropdown/style.css';
 @import '../components/icon/styles.css';
 @import '../components/toolTip/styles.css';
 @import '../components/message/style.css';

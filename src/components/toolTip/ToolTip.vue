@@ -22,6 +22,7 @@
         <slot name="content">
           {{ content }}
         </slot>
+        <div id="arrow" data-popper-arrow></div>
       </div>
     </Transition>
     
@@ -52,14 +53,14 @@ const popperContainerNode = ref<HTMLElement>()
 let PopperInstance: Instance | null = null
 let events: Record<string, any> = reactive({})
 let outerEvents: Record<string, any> = reactive({})
-const popperOptions = computed(() => {
+const PopperOptions = computed(() => {
   return {
     placement: props.placement,
     modifiers: [
       {
         name: 'offset',
         options: {
-          offset: [0,20],
+          offset: [0,9],
         }
       },
     ],
@@ -77,33 +78,44 @@ const close = () => {
   emits('visible-change', false)
 }
 
-const openDebounce = debounce(open, props.openDelay)
-const closeDebounce = debounce(close, props.closeDelay)
+const openDebounce = debounce(open, props.openDelay || 150)
+const closeDebounce = debounce(close, props.closeDelay || 150)
+
+const openFinal = () => {
+  closeDebounce.cancel()
+  openDebounce()
+}
+const closeFinal = () => {
+  openDebounce.cancel()
+  closeDebounce()
+}
 
 const togglePopper = () => {
   if(!isOpen.value) {
-    openDebounce()
+    openFinal()
   } else {
-    closeDebounce()
-  }
-}
-const attachEvents = () => {
-  if(props.trigger === 'click') {
-    events['click'] = togglePopper
-  } else if(props.trigger === 'hover') {
-    events['mouseenter'] = openDebounce
-    outerEvents['mouseleave'] = closeDebounce
+    closeFinal()
   }
 }
 
 useClickOutside(popperContainerNode, () => {
   if(props.trigger === 'click' && isOpen.value && !props.manual) {
-    closeDebounce()
+    closeFinal()
   }
   if(isOpen.value) {
-    emits('clcik-outside', true)
+    emits('click-outside', true)
   }
 })
+
+const attachEvents = () => {
+  if(props.trigger === 'click') {
+    events['click'] = togglePopper
+  } else if(props.trigger === 'hover') {
+    outerEvents['mouseenter'] = openFinal
+    outerEvents['mouseleave'] = closeFinal
+  }
+}
+
 
 if(!props.manual){
   attachEvents()
@@ -130,7 +142,7 @@ watch(() => props.trigger, (newTrigger, oldTrigger) => {
 watch(isOpen, (newValue) => {
   if(newValue) {
     if(triggerNode.value && overlayNode.value) {
-      PopperInstance = createPopper(triggerNode.value, overlayNode.value, popperOptions.value)
+      PopperInstance = createPopper(triggerNode.value, overlayNode.value, PopperOptions.value)
       console.log(props.placement)
     }else {
       PopperInstance?.destroy()
@@ -141,8 +153,8 @@ watch(isOpen, (newValue) => {
 onUnmounted(() => PopperInstance?.destroy())
 
 defineExpose<TooltipInstance>({
-  'show': openDebounce,
-  'hide': closeDebounce
+  'show': openFinal,
+  'hide': closeFinal
 })
 
 defineOptions({

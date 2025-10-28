@@ -5,8 +5,9 @@ import VueMacros from 'unplugin-vue-macros'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "My Awesome Project",
-  description: "A VitePress Site",
+  title: "Clt-Element",
+  base: '/Celeste-element/',
+  description: "仿Element-Plus组件库",
   vite: {
     plugins: [
       VueMacros.vite({
@@ -32,28 +33,30 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' },
-      { text: 'Test', link: '/markdown-examples' }
+      { text: '开始使用', link: '/overview' },
+      { text: 'API示例', link: '/api-examples' }
     ],
 
     sidebar: [
       {
-        text: 'Examples',
+        text: 'Overview组件总览',
         items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' },
-          { text: 'Test here', link: '/api-examples' }
+          { text: 'Overview组件总览', link: '/overview' },
         ]
       },
       {
         text: 'Basic',
         items: [
-          { text: 'Button', link: '/components/button' },
-          { text: 'Input', link: '/components/input' },
-          { text: 'Switch', link: '/components/switch' },
-          { text: 'Select', link: '/components/select' },
-          { text: 'Form', link: '/components/form' }
+          { text: 'Button按钮', link: '/components/button' },
+          { text: 'Collapse折叠面板', link: '/components/collapse' },
+          { text: 'Dropdown下拉菜单', link: '/components/dropdown' },
+          { text: 'Icon图标', link: '/components/icon' },
+          { text: 'Input输入框', link: '/components/input' },
+          { text: 'Message消息提示', link: '/components/message' },
+          { text: 'Switch开关', link: '/components/switch' },
+          { text: 'Select选择器', link: '/components/select' },
+          { text: 'Tooltip文字提示', link: '/components/tooltip' },
+          { text: 'Form表单', link: '/components/form' }
         ]
       }
     ],

@@ -9,7 +9,7 @@ import { computed } from 'vue';
 import type { IconProps } from './types';
 import { omit } from 'lodash-es'
 
-const filteredProps = computed(() => omit(props, ['type', 'coloe']))
+const filteredProps = computed(() => omit(props, ['type', 'color']))
 const customStyle = computed(() => {
   return props.color? { color: props.color } : {}
 })

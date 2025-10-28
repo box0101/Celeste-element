@@ -54,5 +54,5 @@
 }
 
 .slide-enter-active, .slide-leave-active {
-  transition: height 1s ease-in-out
+  transition: height 0.3s ease-in-out
 }

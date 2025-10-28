@@ -1,0 +1,3 @@
+<template>
+  <Collapse></Collapse>
+</template>

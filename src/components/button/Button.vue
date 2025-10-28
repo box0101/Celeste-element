@@ -13,7 +13,7 @@
   }"
   :disabled="disabled || loading"
   :type= "nativeType"
-  :autofoucs= autofocus
+  :autofocus= "autofocus"
   >
   <Icon icon="spinner" spin v-if="loading"></Icon>
   <Icon :icon="icon" v-if="icon"></Icon>
@@ -35,11 +35,7 @@ defineExpose({
   ref: buttonRef
 })
 
-</script>
-
-<script lang="ts">
-import { defineComponent } from 'vue'
-export default defineComponent({
+defineOptions({
   name: 'cltButton'
 })
 </script>

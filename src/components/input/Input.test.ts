@@ -26,6 +26,7 @@ describe('Input', () => {
 
     expect(wrapper.find('.clt-input__prepend').exists()).toBeTruthy()
     expect(wrapper.get('.clt-input__prepend').text()).toBe('prepend')
+
     expect(wrapper.find('.clt-input__suffix').exists()).toBeTruthy()
     expect(wrapper.get('.clt-input__suffix').text()).toBe('suffix')
 
@@ -40,7 +41,7 @@ describe('Input', () => {
     expect(wrapper2.find('.clt-textarea__wrapper').exists()).toBeTruthy()
   })
 
-  it('支持v-mode', async () => {
+  it('支持v-model', async () => {
     const wrapper = mount(Input, {
       props: {
         type: '',

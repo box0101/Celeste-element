@@ -81,3 +81,81 @@
     }
   }
 }
+
+/* ---------- 小号 Switch ---------- */
+.clt-switch--small {
+  height: 24px;
+  font-size: 12px;
+}
+.clt-switch--small .clt-switch__core {
+  height: 16px;
+  min-width: 32px;
+  border-radius: 8px;
+}
+.clt-switch--small .clt-switch__core-action {
+  width: 12px;
+  height: 12px;
+}
+.clt-switch--small .clt-switch__core-inner {
+  padding: 0 3px 0 12px;
+}
+.clt-switch--small.is-checked .clt-switch__core-action {
+  left: calc(100% - 13px);
+}
+.clt-switch--small.is-checked .clt-switch__core-inner {
+  padding: 0 12px 0 3px;
+}
+
+/* ---------- 大号 Switch ---------- */
+.clt-switch--large {
+  height: 40px;
+  font-size: 16px;
+}
+.clt-switch--large .clt-switch__core {
+  height: 24px;
+  min-width: 48px;
+  border-radius: 12px;
+}
+.clt-switch--large .clt-switch__core-action {
+  width: 20px;
+  height: 20px;
+}
+.clt-switch--large .clt-switch__core-inner {
+  padding: 0 6px 0 22px;
+}
+.clt-switch--large.is-checked .clt-switch__core-action {
+  left: calc(100% - 21px);
+}
+.clt-switch--large.is-checked .clt-switch__core-inner {
+  padding: 0 22px 0 6px;
+}
+
+/* ---------- 禁用状态 ---------- */
+.clt-switch.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.6; /* 整体淡化 */
+}
+
+.clt-switch.is-disabled .clt-switch__core {
+  background-color: var(--clt-switch-off-color);
+  border-color: var(--clt-border-color);
+  cursor: not-allowed;
+}
+
+.clt-switch.is-disabled .clt-switch__core-action {
+  background-color: #ccc; /* 滑块灰色 */
+}
+
+.clt-switch.is-disabled .clt-switch__core-inner-text {
+  color: #eee; /* 文字变淡 */
+}
+
+/* 开启状态下 disabled */
+.clt-switch.is-disabled.is-checked .clt-switch__core {
+  background-color: var(--clt-border-color); /* 开启状态也灰化 */
+  border-color: var(--clt-border-color);
+}
+
+.clt-switch.is-disabled.is-checked .clt-switch__core-action {
+  background-color: #ccc;
+}

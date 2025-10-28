@@ -3,5 +3,5 @@ import Switch from '../../../src/components/switch/Switch.vue'
 </script>
 
 <template>
-  <Switch ></Switch>
+  <Switch disabled></Switch>
 </template>

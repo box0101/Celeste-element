@@ -10,7 +10,8 @@
       'is-disabled': disabled,
       'is-active': isActive
     }"
-    :id="`clt-collapse-item--${name}`" @click="handleClick">
+    :id="`clt-collapse-item--${name}`" @click="handleClick"
+    >
       <slot name="title">{{ title }}</slot>
       <Icon icon="angle-right" class="header-angle"></Icon>
     </div>

@@ -21,6 +21,7 @@
         readonly
         ref="inputRef"
         @keydown="handleKeydown"
+        @blur="handleBlur"
       >
         <template #suffix>
           <Icon icon="circle-xmark" v-if="showClearIcon" class="clt-input__clear" @click="onClear" @click.stop="NOOP"></Icon>
@@ -38,7 +39,7 @@
                 'is-highlighted': states.highlightIndex === index
                }"
               :id="`select-item-${item.value}`"
-              @click="itemSelect(item)"
+              @click.stop="itemSelect(item)"
             >
               <RenderVnode :v-node="renderLabel ? renderLabel(item) : item.label"></RenderVnode>
             </li>
@@ -86,12 +87,13 @@ const popperOptions: any = {
   ],
 }
 
+// 初始时默认选中的选项
 const findOption = (value: string) => {
   const option = props.options.find(option => option.value === value)
   return option ? option : null
 }
-
 const initialOption = findOption(props.modelValue)
+
 const states = reactive<SelectStates>({
   selectedOption: initialOption,
   inputValue: initialOption ? initialOption.label : '',
@@ -104,7 +106,8 @@ const itemSelect = (e: SelectOption) => {
   states.inputValue = e.label
   states.selectedOption = e
   emits('change', e.value)
-  emits('update:medelValue', e.value)
+  emits('update:modelValue', e.value)
+  controlDropdown(false)
   inputRef.value.ref.focus()
 }
 
@@ -140,7 +143,7 @@ const onClear = () => {
   states.selectedOption = null
   emits('clear')
   emits('change', '')
-  emits('update:medelValue', '')
+  emits('update:modelValue', '')
 }
 
 const handleKeydown = (e: KeyboardEvent) => {
@@ -184,6 +187,14 @@ const handleKeydown = (e: KeyboardEvent) => {
           states.highlightIndex! ++
         }
       }
+  }
+}
+
+// 失焦则收起浮层
+const handleBlur = () => {
+  // ✅ 如果下拉展开，则关闭
+  if (isDropdownShow.value) {
+    controlDropdown(false)
   }
 }
 
