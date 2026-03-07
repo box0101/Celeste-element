@@ -2,12 +2,12 @@
   "hash": "3c4fd49a",
   "configHash": "49872df5",
   "lockfileHash": "a17a0a25",
-  "browserHash": "e50e1aa6",
+  "browserHash": "b5746c9c",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "c5d8b457",
+      "fileHash": "27fed724",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
@@ -19,19 +19,19 @@
     "vitepress > @vueuse/core": {
       "src": "../../../../node_modules/vitepress/node_modules/@vueuse/core/index.mjs",
       "file": "vitepress___@vueuse_core.js",
-      "fileHash": "9ea0069d",
+      "fileHash": "15156633",
       "needsInterop": false
     },
     "@fortawesome/vue-fontawesome": {
       "src": "../../../../node_modules/@fortawesome/vue-fontawesome/index.es.js",
       "file": "@fortawesome_vue-fontawesome.js",
-      "fileHash": "b9f989ac",
+      "fileHash": "5bccd985",
       "needsInterop": false
     },
     "@fortawesome/fontawesome-svg-core": {
       "src": "../../../../node_modules/@fortawesome/fontawesome-svg-core/index.mjs",
       "file": "@fortawesome_fontawesome-svg-core.js",
-      "fileHash": "20cb7d25",
+      "fileHash": "3af8fe0c",
       "needsInterop": false
     },
     "@fortawesome/free-solid-svg-icons": {
@@ -43,7 +43,13 @@
     "@vitepress-demo-preview/component": {
       "src": "../../../../node_modules/@vitepress-demo-preview/component/dist/preview-component.js",
       "file": "@vitepress-demo-preview_component.js",
-      "fileHash": "00b6d8bb",
+      "fileHash": "10c79f60",
+      "needsInterop": false
+    },
+    "@popperjs/core": {
+      "src": "../../../../node_modules/@popperjs/core/lib/index.js",
+      "file": "@popperjs_core.js",
+      "fileHash": "dafff3bb",
       "needsInterop": false
     },
     "lodash-es": {
@@ -57,20 +63,14 @@
       "file": "async-validator.js",
       "fileHash": "d5f8089b",
       "needsInterop": false
-    },
-    "@popperjs/core": {
-      "src": "../../../../node_modules/@popperjs/core/lib/index.js",
-      "file": "@popperjs_core.js",
-      "fileHash": "dafff3bb",
-      "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-NFKAMMXR": {
-      "file": "chunk-NFKAMMXR.js"
-    },
     "chunk-JD3CXNQ6": {
       "file": "chunk-JD3CXNQ6.js"
+    },
+    "chunk-NFKAMMXR": {
+      "file": "chunk-NFKAMMXR.js"
     }
   }
 }
