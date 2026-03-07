@@ -218,5 +218,28 @@
      color: var(--clt-input-clear-hover-color);
     }
   }
+  .clt-input__ai-button {
+    color: var(--clt-color-primary);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-left: 5px;
+    &:hover {
+      color: var(--clt-color-primary-light-3);
+      transform: scale(1.1);
+    }
+    &.is-loading {
+      animation: rotate 1s linear infinite;
+      opacity: 0.6;
+      cursor: not-allowed;
+      &:hover {
+        transform: none;
+      }
+    }
+  }
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
 }
 

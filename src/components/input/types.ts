@@ -9,7 +9,10 @@ export interface InputProps {
   readonly?: boolean,
   autocomplete?: string,
   autofocus?: boolean,
-  form?:string
+  form?: string,
+  // AI 润色功能
+  enableAI?: boolean,
+  aiPrompt?: string
 }
 
 export interface InputEmits {
@@ -19,6 +22,10 @@ export interface InputEmits {
   (e: 'focus', value: FocusEvent): void,
   (e: 'blur', value: FocusEvent): void,
   (e: 'clear', value: string): void,
+  (e: 'ai-polish', original: string, polished: string): void,
+  (e: 'ai-error', error: string): void,
+  (e: 'polish-start'): void,
+  (e: 'polish-end', text: string): void
 }
 
 export interface InputInstance {

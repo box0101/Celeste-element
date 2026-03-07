@@ -1,30 +1,37 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, loadEnv } from 'vitepress'
 import { fileURLToPath, URL } from 'node:url'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import VueMacros from 'unplugin-vue-macros'
 import { containerPreview, componentPreview } from '@vitepress-demo-preview/plugin'
 // https://vitepress.dev/reference/site-config
-export default defineConfig({
-  title: "Clt-Element",
-  base: '/Celeste-element/',
-  description: "仿Element-Plus组件库",
-  vite: {
-    plugins: [
-      VueMacros.vite({
-        setupComponent: false,
-        setupSFC: false,
-        plugins: {
-          vueJsx: vueJsx(),
-        },
-      }),
-    ],
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('../../src', import.meta.url))
+export default defineConfig(({ mode }) => {
+  // 加载环境变量
+  const env = loadEnv(mode, process.cwd(), '')
+
+  return {
+    title: "Clt-Element",
+    base: '/Celeste-element/',
+    description: "仿Element-Plus组件库",
+    vite: {
+      plugins: [
+        VueMacros.vite({
+          setupComponent: false,
+          setupSFC: false,
+          plugins: {
+            vueJsx: vueJsx(),
+          },
+        }),
+      ],
+      resolve: {
+        alias: {
+          '@': fileURLToPath(new URL('../../src', import.meta.url))
+        }
+      },
+      define: {
+        'import.meta.env.VITE_ZHIPU_API_KEY': JSON.stringify(env.VITE_ZHIPU_API_KEY)
       }
-    }
-  },
-  markdown: {
+    },
+    markdown: {
     config(md) {
       md.use(containerPreview)
       md.use(componentPreview)
@@ -64,5 +71,6 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ]
+    }
   }
 })
